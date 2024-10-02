@@ -1,9 +1,9 @@
 function MainContent() {
     return (
-        <main>
-            <p>I love to visit New York, Paris, and Tokyo.</p>
-        </main>
+      <main style={{ padding: '20px', fontSize: '18px' }}>
+        <p>I love to visit New York, Paris, and Tokyo.</p>
+      </main>
     );
-}
-
-export default MainContent;
+  }
+  
+  export default MainContent;
