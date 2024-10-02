@@ -15,13 +15,18 @@ const Search = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        setError(null);
+        setError(null); // Reset error message before each search
+        setUserData(null); // Clear previous user data
         try {
             const data = await fetchUserData(username);
             setUserData(data);
         } catch (err) {
-            setError('Looks like we can’t find the user');
-            setUserData(null); // Clear previous user data on error
+            // Assuming that the error from GitHub API indicates user not found
+            if (err.response && err.response.status === 404) {
+                setError("Looks like we can't find the user"); // Set the error message
+            } else {
+                setError("An error occurred while fetching data."); // Generic error message
+            }
         } finally {
             setLoading(false);
         }
@@ -40,7 +45,7 @@ const Search = () => {
             </form>
 
             {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>}
+            {error && <p>{error}</p>} {/* Display the error message */}
             {userData && (
                 <div>
                     <h2>{userData.name}</h2>
