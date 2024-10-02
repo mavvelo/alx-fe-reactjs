@@ -1,22 +1,23 @@
-import UserProfile from './components/UserProfile';
+import WelcomeMessage from './components/WelcomeMessage';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import WelcomeMessage from './components/WelcomeMessage';
-
-// import './App.css'; // Comment out or remove this line
+import UserProfile from './components/UserProfile';
 
 function App() {
+  const user = {
+    name: "Mike",
+    age: 25,
+    bio: "Loves hiking and photography",
+  };
   return (
-    <>
-      <h1>User Profiles</h1>
-      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-      <UserProfile name="Bob" age="30" bio="An avid traveler and food lover" />
-      <WelcomeMessage />
-      <Header />
-      <MainContent />
-      <Footer />
-    </>
+      <div>
+          <WelcomeMessage />
+          <Header />
+          <UserProfile {...user} />
+          <MainContent />
+          <Footer />
+      </div>
   );
 }
 
