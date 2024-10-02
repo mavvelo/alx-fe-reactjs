@@ -1,4 +1,4 @@
-// src/components/RegistrationForm.js
+// src/components/RegistrationForm.jsx
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
@@ -31,15 +31,30 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        <input type="text" name="username" value={formData.username} onChange={handleChange} />
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <label>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
       </div>
       <div>
         <label>Password:</label>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} />
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
       </div>
       <button type="submit">Register</button>
     </form>
