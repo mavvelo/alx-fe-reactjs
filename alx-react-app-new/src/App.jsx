@@ -4,7 +4,6 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import WelcomeMessage from './components/WelcomeMessage';
 
-// import './App.css'; // Comment out or remove this line
 
 function App() {
   return (
