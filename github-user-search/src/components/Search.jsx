@@ -1,12 +1,21 @@
-// src/components/Search.jsx
+
 import React, { useState } from 'react';
-import { fetchUserData } from '../services/githubService';
+import { fetchUserData } from './services/githubService';
+import axios from 'axios';
+
+export const fetchUserData = async (username) => {
+    const response = await axios.get(`https://api.github.com/users/${username}`);
+    return response.data;
+};
+
+// This is already integrated in the Search component above.
+
 
 const Search = () => {
     const [username, setUsername] = useState('');
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState('');
 
     const handleInputChange = (e) => {
         setUsername(e.target.value);
@@ -15,18 +24,12 @@ const Search = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        setError(null); // Reset error message before each search
-        setUserData(null); // Clear previous user data
+        setError('');
         try {
             const data = await fetchUserData(username);
             setUserData(data);
         } catch (err) {
-            // Check if the error is due to user not found (404)
-            if (err.response && err.response.status === 404) {
-                setError("Looks like we can't find the user"); // Set the error message
-            } else {
-                setError("An error occurred while fetching data."); // Generic error message
-            }
+            setError("Looks like we can't find the user");
         } finally {
             setLoading(false);
         }
@@ -35,27 +38,21 @@ const Search = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Enter GitHub username"
-                    value={username}
-                    onChange={handleInputChange}
+                <input 
+                    type="text" 
+                    value={username} 
+                    onChange={handleInputChange} 
+                    placeholder="Enter GitHub username" 
                 />
                 <button type="submit">Search</button>
             </form>
-
             {loading && <p>Loading...</p>}
-            {error && <p>{error}</p>} {/* Display the error message */}
+            {error && <p>{error}</p>}
             {userData && (
                 <div>
-                    <h2>{userData.name}</h2>
-                    <p>Login: {userData.login}</p> {/* Display user login */}
-                    <img src={userData.avatar_url} alt={userData.name} width="100" />
-                    <p>
-                        <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
-                            View Profile
-                        </a>
-                    </p>
+                    <img src={userData.avatar_url} alt={userData.login} />
+                    <h3>{userData.login}</h3>
+                    <a href={userData.html_url} target="_blank" rel="noopener noreferrer">View Profile</a>
                 </div>
             )}
         </div>
