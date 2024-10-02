@@ -7,14 +7,14 @@ const SignupSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Required'), // Yup.string().required for firstName
   lastName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Required'), // Yup.string().required for lastName
   email: Yup.string()
     .email('Invalid email')
-    .required('Required'),
+    .required('Required'), // Yup.string().required for email
   // Add more validation rules as needed
 });
 
