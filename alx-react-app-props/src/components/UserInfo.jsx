@@ -1,6 +1,9 @@
-import UserDetails from './UserDetails';
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
 
-function UserInfo({ userData }) {
+function UserInfo() {
+  const { userData } = useContext(UserContext);
+
   return <UserDetails userData={userData} />;
 }
 
