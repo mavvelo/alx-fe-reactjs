@@ -4,7 +4,7 @@ import { UserProvider } from './UserContext';
 
 function App() {
   return (
-    <UserProvider>
+    <UserProvider value={{ name: "Jane Doe", email: "jane.doe@example.com" }}>
       <ProfilePage />
     </UserProvider>
   );
