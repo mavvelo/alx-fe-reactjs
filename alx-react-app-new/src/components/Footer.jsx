@@ -1,6 +1,7 @@
+// src/components/Footer.jsx
 const Footer = () => {
     return (
-      <footer style={{ backgroundColor: 'lightgray', padding: '10px', textAlign: 'center' }}>
+      <footer style={{ backgroundColor: 'lightgray', textAlign: 'center', padding: '10px', marginTop: '20px' }}>
         <p>© 2023 City Lovers</p>
       </footer>
     );
