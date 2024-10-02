@@ -4,25 +4,35 @@ function RegistrationForm() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({}); // State to hold validation errors
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newErrors = {};
+    
+    let validationErrors = {};
+
+    // Validation for username, email, and password
     if (!username) {
-      newErrors.username = 'Username is required';
+      validationErrors.username = 'Username is required';
     }
+    
     if (!email) {
-      newErrors.email = 'Email is required';
+      validationErrors.email = 'Email is required';
     }
+    
     if (!password) {
-      newErrors.password = 'Password is required';
+      validationErrors.password = 'Password is required';
     }
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
-    // Handle form submission here, e.g., send data to API
+
+    // Clear errors if validation passes
+    setErrors({});
+
+    // Handle form submission (e.g., send data to the server)
     console.log('Form submitted:', { username, email, password });
   };
 
@@ -33,32 +43,35 @@ function RegistrationForm() {
         <input
           type="text"
           id="username"
+          name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        {errors.username && <p className="error">{errors.username}</p>}
+        {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>} {/* Display username error */}
       </div>
       <div>
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
+          name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {errors.email && <p className="error">{errors.email}</p>}
+        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>} {/* Display email error */}
       </div>
       <div>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
           id="password"
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errors.password && <p className="error">{errors.password}</p>}
+        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>} {/* Display password error */}
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">Register</button>
     </form>
   );
 }
