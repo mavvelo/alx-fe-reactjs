@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList'; // Added import statement
 import './App.css';
 
 // Function to fetch user data (replace with actual API call if needed)
@@ -67,7 +68,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" element={<h1>Welcome to My Recipe App</h1>} />
+          <Route path="/" element={<RecipeList />} /> {/* Use RecipeList component on home route */}
           <Route path="/add-recipe" element={<AddRecipeForm />} />
           <Route path="/recipe/:id" element={<RecipeDetails recipeId={match.params.id} />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
