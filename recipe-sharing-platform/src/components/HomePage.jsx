@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RecipeCard from './RecipeCard';
+import RecipeCard from './RecipeCard.jsx';
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);
@@ -15,7 +15,9 @@ function HomePage() {
       <h1 className="text-3xl font-bold mb-4">Recipes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {recipes.map(recipe => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
+          <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-105" key={recipe.id}>
+            <RecipeCard recipe={recipe} />
+          </div>
         ))}
       </div>
     </div>
