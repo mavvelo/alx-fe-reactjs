@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 function AddRecipeForm() {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [steps, setSteps] = useState(''); // Use steps instead of instructions
+  const [steps, setSteps] = useState('');
   const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ function AddRecipeForm() {
       newErrors.ingredients = 'Ingredients are required';
     }
     if (!steps) {
-      newErrors.steps = 'Steps are required'; // Use steps instead of instructions
+      newErrors.steps = 'Steps are required';
     }
 
     if (Object.keys(newErrors).length > 0) {
