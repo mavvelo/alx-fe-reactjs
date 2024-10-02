@@ -21,7 +21,7 @@ const Search = () => {
             const data = await fetchUserData(username);
             setUserData(data);
         } catch (err) {
-            // Assuming that the error from GitHub API indicates user not found
+            // Check if the error is due to user not found (404)
             if (err.response && err.response.status === 404) {
                 setError("Looks like we can't find the user"); // Set the error message
             } else {
