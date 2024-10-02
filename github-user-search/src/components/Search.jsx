@@ -21,6 +21,7 @@ const Search = () => {
             setUserData(data);
         } catch (err) {
             setError('Looks like we can’t find the user');
+            setUserData(null); // Clear previous user data on error
         } finally {
             setLoading(false);
         }
@@ -43,6 +44,7 @@ const Search = () => {
             {userData && (
                 <div>
                     <h2>{userData.name}</h2>
+                    <p>Login: {userData.login}</p> {/* Display user login */}
                     <img src={userData.avatar_url} alt={userData.name} width="100" />
                     <p>
                         <a href={userData.html_url} target="_blank" rel="noopener noreferrer">
