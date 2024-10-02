@@ -1,9 +1,9 @@
-function Footer() {
+function MainContent() {
     return (
-        <footer>
-            <p>© 2023 City Lovers</p>
-        </footer>
+      <main style={{ padding: '20px', fontSize: '18px' }}>
+        <p>I love to visit New York, Paris, and Tokyo.</p>
+      </main>
     );
-}
-
-export default Footer;
+  }
+  
+  export default MainContent;
